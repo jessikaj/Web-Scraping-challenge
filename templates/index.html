@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mars Web Scrape!</title>
+<link rel="icon" href="{{ url_for('static', filename='img/icon.gif') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<style>
+  #hemi {
+    width:90%; 
+    margin-left:auto;
+    margin-right:auto;
+
+  }
+  .img-card{
+    width:45%;
+    margin-top:2%; 
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    float:left;
+  }
+</style>
+</head>
+<body>
+
+	<div id="content">
+      <div class="jumbotron text-center">
+        <h1 class="display-3">Mission to Mars</h1>
+          <a class="btn btn-primary" href="/scrape">Scrape New Data</a>
+      </div>
+
+      <h1>Latest Mars News</h1>
+      <h3>{{news_title}}</h3>
+      <h4>{{news_p}}</h4>
+
+      <table class="table table-striped">
+          <tbody>
+          
+              {% for index, hd in table_headers %}
+              <tr>
+                <td scope="col">{{ hd }}</td>
+                <td scope="col">{{ table_content[index] }}</td>
+              </tr>
+                {% endfor %}
+        </tbody>
+      </table>
+
+
+  <img src= {{featured_image_url}}> 
+
+  <div id="hemi">
+    {% for img in hemisphere_image_urls %}
+    <div class='img-card'>
+      <img src= {{img['img_url']}}> 
+      <div>{{img['title']}}</div>
+    </div>
+      {% endfor %}
+
+  </div>
+</div>
+</body>
+</html>
